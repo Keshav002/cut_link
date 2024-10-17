@@ -6,20 +6,20 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {logout} from "@/db/apiAuth";
+import { logout } from "@/db/apiAuth";
 import useFetch from "@/hooks/use-fetch";
-import {Avatar, AvatarFallback, AvatarImage} from "@radix-ui/react-avatar";
-import {LinkIcon, LogOut} from "lucide-react";
-import {Link, useNavigate} from "react-router-dom";
-import {BarLoader} from "react-spinners";
-import {Button} from "./ui/button";
-import {UrlState} from "@/context";
+import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+import { LinkIcon, LogOut } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { BarLoader } from "react-spinners";
+import { Button } from "./ui/button";
+import { UrlState } from "@/context";
 
 const Header = () => {
-  const {loading, fn: fnLogout} = useFetch(logout);
+  const { loading, fn: fnLogout } = useFetch(logout);
   const navigate = useNavigate();
 
-  const {user, fetchUser} = UrlState();
+  const { user, fetchUser } = UrlState();
 
   return (
     <>
@@ -32,12 +32,16 @@ const Header = () => {
             <Button onClick={() => navigate("/auth")}>Login</Button>
           ) : (
             <DropdownMenu>
-              <DropdownMenuTrigger className="w-10 rounded-full overflow-hidden">
-                <Avatar>
-                  <AvatarImage src={user?.user_metadata?.profile_pic} />
+              <DropdownMenuTrigger className="w-10 h-10 rounded-full overflow-hidden">
+                <Avatar className="w-full h-full">
+                  <AvatarImage
+                    src={user?.user_metadata?.profile_pic}
+                    className="object-cover w-full h-full"
+                  />
                   <AvatarFallback>PA</AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
+
               <DropdownMenuContent>
                 <DropdownMenuLabel>
                   {user?.user_metadata?.name}

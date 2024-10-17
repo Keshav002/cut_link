@@ -9,7 +9,8 @@ const AppLayout = () => {
         <Outlet />
       </main>
       <div className="p-10 text-center bg-gray-800 mt-10">
-        Made with 💗 by RoadsideCoder
+        cutmylink takes your complex URLs and turns them into neat, professional links that are easy to share and remember
+
       </div>
     </div>
   );
